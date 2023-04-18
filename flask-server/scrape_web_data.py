@@ -84,12 +84,12 @@ depression = pd.DataFrame(depression_data_unique)
 depression["label"] = 1
 depression.head()
 
-subreddits = ["AskReddit", "news", "politics", "worldnews", "technology", "science", "programming"]
+subreddits = ["nosleep", "YouShouldKnow", "investing", "askphilosophy", "StoriesAboutKevin", "TalesFromYourServer"]
 subreddits_data_unique = []
 for subreddit in subreddits:
     # scraping subreddit data
     subreddit_data = []
-    reddit_scrape(f"https://www.reddit.com/r/{subreddit}.json", 50, subreddit_data)
+    reddit_scrape(f"https://www.reddit.com/r/{subreddit}.json", 90, subreddit_data)
 
     subreddit_data_unique = []
     create_unique_list(subreddit_data, subreddit_data_unique)

@@ -1,1 +1,4 @@
-# react_website
+# Suicidal, Depression, and Neither Model
+### To run project on windows:
+
+This project was built and run on a windows computer. The same procedure should work for any operating system, but the commands may be slightly different. Download and extract nlp final project zip file and open it. Download and use python 3.9.13. Then navigate to the flask-server directory with cd .\flask-server. Use the command python -m venv venv to create a virtual environment. Then run .\venv\Scripts\activate to activate your virtual environment and run pip install -r requirements.txt to download the necessary packages for the project. Optionaly, you can download cuda 11.7 if you want to use your gpu for the model. Start the back end by running python server.py. To start the front end, run cd .. and then cd .\client\ and run npm start. The website should open automatically, but if it doesn’t, navigate to localhost:3000. Whatever you type into the text box will be evaluated by the model when you press submit, and the output of the model will be shown below.
