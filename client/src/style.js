@@ -18,7 +18,7 @@ const styles = {
     whiteSpace: 'pre-wrap',
   },
   button: {
-    backgroundColor: '#4CAF50',
+    backgroundColor: '#db7093',
     color: '#fff',
     padding: '6px 12px',
     border: 'none',

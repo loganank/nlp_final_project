@@ -1,21 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import {styles} from './style'
 
 function App() {
 
   const [inputValue, setInputValue] = useState('')
   const [classifier, setClassifier] = useState('')
-
-  useEffect(() => {
-    // fetch("/api").then(
-    //   res => res.json()
-    // ).then(
-    //   data => {
-    //     setData(data)
-    //   }
-    // )
-  }, [])
-
 
   const handleClick = () => {
     console.log(inputValue)

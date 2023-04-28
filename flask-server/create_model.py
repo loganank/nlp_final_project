@@ -9,10 +9,15 @@ from transformers import BertTokenizer, BertModel
 import torch
 from torch import cuda
 from tqdm import tqdm_notebook as tqdm
+
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+
+# use cuda
 device = 'cuda' if cuda.is_available() else 'cpu'
 
 # Split data into train and test
-from sklearn.model_selection import train_test_split
 
 df = pd.read_csv('suicide_vs_depression_vs_generic.csv')
 
@@ -175,7 +180,7 @@ tokenizer.encode_plus(
 MAX_LEN = 128
 BATCH_SIZE = 64
 EPOCHS = 3
-NUM_OUT = 3 # binary task
+NUM_OUT = 3
 LEARNING_RATE = 2e-05
 
 training_data = MultiLabelDataset(train_X, torch.from_numpy(train_y), tokenizer, MAX_LEN)
@@ -226,3 +231,12 @@ else:
 guess, targets = validation(model, testing_loader)
 guesses = torch.max(guess, dim=1)
 print('accuracy on test set {}'.format(accuracy_score(guesses.indices, targets)))
+
+# create confusion matrix
+cm = confusion_matrix(targets, guesses.indices, labels=[0, 1, 2])
+disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=['Suicidal', 'Depressed', 'Other'])
+fig, ax = plt.subplots()
+disp.plot(ax=ax)
+
+#save confusion matrix
+fig.savefig('confusion_matrix.png')
